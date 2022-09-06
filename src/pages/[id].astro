@@ -4,6 +4,7 @@ import Detail from "../components/Detail";
 import Header from "../components/Header";
 import data from '../data.json';
 import Layout from '../layouts/Layout.astro';
+import type { GalleryItemType } from "../types/GalleryItemType";
 
 export async function getStaticPaths() {
   return data.map((item) => {
@@ -15,8 +16,18 @@ export async function getStaticPaths() {
 
 const { id } = Astro.params;
 
+if (!id) {
+  return null;
+}
+
+const items = data as GalleryItemType[];
+const item = items.find((e) => e.id === +id);
+
+if (!item) {
+  return null;
+}
 ---
-<Layout title="Welcome to Astro.">
-    <Header />
-	<Detail id={id} client:idle/>
+<Layout title={`${item.name} - galleria.`}>
+  <Header />
+	<Detail item={item} client:idle/>
 </Layout>

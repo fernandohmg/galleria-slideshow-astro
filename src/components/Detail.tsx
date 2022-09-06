@@ -4,29 +4,21 @@ import data from "../data.json";
 import type { GalleryItemType } from "../types/GalleryItemType";
 
 interface DetailProps {
-  id?: string | number;
+  item: GalleryItemType;
 }
 
 const getElement = (renderLink: boolean) => {
   return renderLink ? "a" : "div";
 };
 
-export default function Detail({ id }: DetailProps) {
+export default function Detail({ item }: DetailProps) {
+  const { id } = item;
   const [showFullImage, setShowFullImage] = useState(false);
 
   const open = () => setShowFullImage(true);
   const close = () => setShowFullImage(false);
 
-  if (!id) {
-    return null;
-  }
-
   const items = data as GalleryItemType[];
-  const item = items.find((e) => e.id === +id);
-
-  if (!item) {
-    return null;
-  }
 
   const hasPrevious = items.some((e) => e.id === +id - 1);
   const hasNext = items.some((e) => e.id === +id + 1);
