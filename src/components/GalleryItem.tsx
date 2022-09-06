@@ -6,7 +6,7 @@ interface GalleryItemProps {
 
 export default function GalleryItem({ item }: GalleryItemProps) {
   return (
-    <a className="relative group" href={`/${item.id}`}>
+    <a className="relative group" href={`/${item.slug}`}>
       <img
         className="group-hover:opacity-80 transition w-full"
         src={item.images.thumbnail}

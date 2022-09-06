@@ -1,3 +1,5 @@
+import data from "../data.json";
+
 interface HeaderProps {
   isRootPage?: boolean;
 }
@@ -9,7 +11,7 @@ export default function Header({ isRootPage }: HeaderProps) {
         <img className="block h-8" src="/logo.webp" alt="" />
       </a>
       <a
-        href={`${isRootPage ? "/1" : "/"}`}
+        href={`${isRootPage ? `/${data[0].slug}` : "/"}`}
         className="text-7D7D7D hover:text-black text-xxs tracking-[0.121em] uppercase flex justify-center items-center"
       >
         {`${isRootPage ? "Start" : "Stop"} slideshow`}

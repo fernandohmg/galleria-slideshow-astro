@@ -1,5 +1,6 @@
 export type GalleryItemType = {
   id: number;
+  slug: string;
   name: string;
   year: number;
   description: string;

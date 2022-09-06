@@ -9,19 +9,20 @@ import type { GalleryItemType } from "../types/GalleryItemType";
 export async function getStaticPaths() {
   return data.map((item) => {
     return {
-      params: { id: item.id.toString() },
+      params: { slug: item.slug.toString() },
     };
   });
 }
 
-const { id } = Astro.params;
+const { slug } = Astro.params;
 
-if (!id) {
+if (!slug) {
   return null;
 }
 
 const items = data as GalleryItemType[];
-const item = items.find((e) => e.id === +id);
+const item = items.find((e) => e.slug === slug);
+
 
 if (!item) {
   return null;

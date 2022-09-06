@@ -20,12 +20,12 @@ export default function Detail({ item }: DetailProps) {
 
   const items = data as GalleryItemType[];
 
-  const hasPrevious = items.some((e) => e.id === +id - 1);
-  const hasNext = items.some((e) => e.id === +id + 1);
+  const hasPrevious = items.find((e) => e.id === +id - 1);
+  const hasNext = items.find((e) => e.id === +id + 1);
   const progress = (+id * 100) / items.length;
 
-  const BackLink = getElement(hasPrevious);
-  const NextLink = getElement(hasNext);
+  const BackLink = getElement(!!hasPrevious);
+  const NextLink = getElement(!!hasNext);
 
   return (
     <>
@@ -91,7 +91,7 @@ export default function Detail({ item }: DetailProps) {
             className={`relative after:absolute after:-inset-2 ${
               hasPrevious ? "opacity-100 hover:opacity-50" : "opacity-10"
             }`}
-            href={hasPrevious ? `/${+id - 1}` : ""}
+            href={hasPrevious ? `/${hasPrevious.slug}` : ""}
             title="Back"
           >
             <img
@@ -106,7 +106,7 @@ export default function Detail({ item }: DetailProps) {
             className={`ml-6 relative after:absolute after:-inset-2  ${
               hasNext ? "opacity-100 hover:opacity-50" : "opacity-10"
             }`}
-            href={hasNext ? `/${+id + 1}` : ""}
+            href={hasNext ? `/${hasNext.slug}` : ""}
             title="Next"
           >
             <img
