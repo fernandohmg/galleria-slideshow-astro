@@ -103,7 +103,7 @@ export default function Detail({ id }: DetailProps) {
             title="Back"
           >
             <img
-              src="shared/icon-back-button.svg"
+              src="/shared/icon-back-button.svg"
               alt=""
               width={16}
               height={16}
@@ -118,7 +118,7 @@ export default function Detail({ id }: DetailProps) {
             title="Next"
           >
             <img
-              src="shared/icon-next-button.svg"
+              src="/shared/icon-next-button.svg"
               alt=""
               width={16}
               height={16}
