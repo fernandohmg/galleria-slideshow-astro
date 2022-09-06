@@ -1,6 +1,7 @@
-export const Header = () => {
-  // const isHomePath = location.pathname === "/";
-
+interface HeaderProps {
+  isRootPage?: boolean;
+}
+export default function Header({ isRootPage }: HeaderProps) {
   return (
     <header className="p-6 tablet:px-10 tablet:py-7 desktop:p-10 flex justify-between border border-E5E5E5 border-b">
       <a href="/" title="Home">
@@ -8,11 +9,11 @@ export const Header = () => {
         <img className="block h-8" src="/logo.webp" alt="" />
       </a>
       <a
-        href={`${true ? "/1" : "/"}`}
+        href={`${isRootPage ? "/1" : "/"}`}
         className="text-7D7D7D hover:text-black text-xxs tracking-[0.121em] uppercase flex justify-center items-center"
       >
-        {`${true ? "Start" : "Stop"} slideshow`}
+        {`${isRootPage ? "Start" : "Stop"} slideshow`}
       </a>
     </header>
   );
-};
+}

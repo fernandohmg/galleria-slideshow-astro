@@ -1,0 +1,22 @@
+---
+import "@reach/dialog/styles.css";
+import Detail from "../components/Detail";
+import Header from "../components/Header";
+import data from '../data.json';
+import Layout from '../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  return data.map((item) => {
+    return {
+      params: { id: item.id.toString() },
+    };
+  });
+}
+
+const { id } = Astro.params;
+
+---
+<Layout title="Welcome to Astro.">
+    <Header />
+	<Detail id={id} client:idle/>
+</Layout>

@@ -4,7 +4,7 @@ interface GalleryItemProps {
   item: GalleryItemType;
 }
 
-export const GalleryItem = ({ item }: GalleryItemProps) => {
+export default function GalleryItem({ item }: GalleryItemProps) {
   return (
     <a className="relative group" href={`/${item.id}`}>
       <img
@@ -18,4 +18,4 @@ export const GalleryItem = ({ item }: GalleryItemProps) => {
       </div>
     </a>
   );
-};
+}
