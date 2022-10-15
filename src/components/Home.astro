@@ -1,0 +1,17 @@
+---
+import data from "../data.json";
+import type { GalleryItemType } from "../types/GalleryItemType";
+import GalleryItem from "./GalleryItem.astro";
+
+const items = data as GalleryItemType[];
+---
+
+<main>
+    <ul class="p-6 space-y-6 tablet:space-y-10 tablet:gap-10 tablet:block tablet:p-10 tablet:columns-2 tablet:column desktop:columns-4">
+      {items.map((item) => (
+        <li>
+          <GalleryItem item={item} />
+        </li>
+      ))}
+    </ul>
+</main>

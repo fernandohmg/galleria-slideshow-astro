@@ -1,0 +1,21 @@
+---
+import type { GalleryItemType } from '../types/GalleryItemType';
+
+interface Props {
+    item: GalleryItemType;
+}
+
+const {item} = Astro.props;
+---
+
+<a class="relative group" href={`/${item.slug}`}>
+    <img
+      class="group-hover:opacity-80 transition w-full"
+      src={item.images.thumbnail}
+      alt=""
+    />
+    <div class="absolute w-full bottom-0 p-8 pt-14 bg-hover-gradient">
+      <h2 class="text-2xl leading-7 text-white font-bold">{item.name}</h2>
+      <p class="text-xs text-7D7D7D mt-1.5">{item.artist.name}</p>
+    </div>
+</a>
